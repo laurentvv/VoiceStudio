@@ -585,7 +585,7 @@ def test_select_mlx_audio_repo_id_accepts_underscore_prefixes(fresh_app, monkeyp
         "owner/repo.",
         "owner/repo.git",
         f"owner/{'a' * 97}",
-        "-" * 100_000,
+        pytest.param("-" * 100_000, id="very-long-id"),
     ],
 )
 def test_select_mlx_audio_rejects_malformed_repo_ids(fresh_app, monkeypatch, model_id):
